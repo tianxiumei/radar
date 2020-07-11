@@ -15,23 +15,7 @@ export const DefaultSplits = [
     },
   ]
 
- export interface IDataset{
-    rows:FieldDataItem
-    fields:IField[]
-  }
-  
-  export interface ISplitter{
-    number:number
-    color:string
-  }
-  
-  export interface IColors{
-    max:number
-    min:number
-    splitters:ISplitter[]
-  }
-
-  export const defaultColors = [
+  export const DefaultColors = [
     "#1989fa",
     "#00bcd4",
     "#7087e4",
@@ -63,3 +47,24 @@ export const DefaultSplits = [
     "#c1c7d0"
   ];
   
+
+ export interface IDataset{
+    rows:FieldDataItem
+    fields:IField[]
+  }
+  
+  export interface ISplitter{
+    number:number
+    color:string
+  }
+  
+  export interface IColors{
+    max:number
+    min:number
+    splitters:ISplitter[]
+  }
+
+  export enum Type{
+    BUCKET='bucket',
+    METRIC='metric'
+  }

@@ -1,7 +1,7 @@
 <form>
   <collapse accordion="true">
     <panel title="常规">
-      <input type="dropdown" field="metric" required="true">
+      <input type="multiselect" field="metrics" required="true">
         <label>统计指标</label>
         <dataset>fields</dataset>
       </input>
@@ -9,9 +9,26 @@
         <label>分组</label>
         <dataset>fields</dataset>
       </input>
-      <input type="number" field="maxIndicators">
-        <label>指示器最大数量</label>
-        <initial-value>10</initial-value>
+      <input type="radio" field="type">
+        <label>类型</label>
+        <initial-value>bucket</initial-value>
+        <choice value="bucket">分组</choice>
+        <choice value="metric">指标</choice>
+      </input>
+      <input type="radio" field="showScale">
+        <label>是否显示刻度</label>
+        <initial-value>false</initial-value>
+        <choice value="false">否</choice>
+        <choice value="true">是</choice>
+      </input>
+      <input type="number" field="maxFields">
+        <label>展示字段数</label>
+        <explain>类型为指标时选择展示字段数量</explain>
+        <initial-value>10</initial-value>  <initial-value>10</initial-value>
+      </input>
+      <input type='number' field="precision">
+        <label>精度</label>
+        <initial-value>2</initial-value>
       </input>
     </panel>
     <panel title="图例">
@@ -25,6 +42,12 @@
       </input>
     </panel>
     <panel title="网格线">
+      <input type="radio" field="showGrid">
+        <label>是否显示网格线</label>
+        <initial-value>false</initial-value>
+        <choice value="false">否</choice>
+        <choice value="true">是</choice>
+      </input>
        <input type="dropdown" field="gridShap">
         <label>形状</label>
         <initial-value>line</initial-value>
@@ -36,32 +59,41 @@
         <label>线颜色</label>
       </input>
       <input type='number' field="lineWidth">
+        <initial-value>1</initial-value>
         <label>线宽度</label>
       </input>
     </panel>
-     <panel title="线条">
+     <panel title="数据线">
       <input type='color-splitter' field="colors">
         <label>字体颜色</label>
       </input>
-      <input type="text" field="lineColors">
-        <explain>按照指标顺序，用逗号隔开</explain>
-        <label>线条颜色</label>
+      <input type="radio" field="showNumber">
+        <label>是否显示数字</label>
+        <initial-value>false</initial-value>
+        <choice value="false">否</choice>
+        <choice value="true">是</choice>
       </input>
-       <input type="text" field="pointColors">
-        <explain>按照指标顺序，用逗号隔开</explain>
-        <label>拐点颜色</label>
+      <input type="text" field="lineColors">
+        <explain>按照指标或者分组值的顺序，用逗号隔开</explain>
+        <label>线条颜色</label>
       </input>
       <input type='number' field="lineSize">
         <label>线尺寸</label>
       </input>
      </panel>
      <panel title="区域">
-      <input  type='text' field='areaColors'>
-       <explain>按照指标顺序，用逗号隔开</explain>
-       <label>区域颜色</label>
+      <input type="radio" field="showColor">
+        <label>是否显示颜色</label>
+        <initial-value>false</initial-value>
+        <choice value="false">否</choice>
+        <choice value="true">是</choice>
       </input>
     </panel>
     <panel title="指示器">
+     <input type="number" field="maxIndicators">
+        <label>指示器最大数量</label>
+        <initial-value>10</initial-value>
+      </input>
       <input type="number" field="indicatorOffset">
         <label>标签偏移量</label>
         <initial-value>10</initial-value>
@@ -73,6 +105,12 @@
       <input type="number" field="indicatorFontSize">
         <label>标签旋转字体大小</label>
         <initial-value>12</initial-value>
+      </input>
+       <input type="number" field="dataMax">
+        <label>指示器最大值</label>
+      </input>
+       <input type="number" field="dataMin">
+        <label>指示器最小值</label>
       </input>
     </panel>
   </collapse>
